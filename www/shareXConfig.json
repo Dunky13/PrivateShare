@@ -1,0 +1,13 @@
+{
+  "Name": "went.io",
+  "RequestType": "POST",
+  "RequestURL": "https://upload.went.io/upload.php",
+  "FileFormName": "file",
+  "Arguments": {
+    "k": "<Proper Key Here, ask Marc Went>",
+	"enc": 1
+  },
+  "ResponseType": "Text",
+  "URL": "$json:url$",
+  "DeletionURL": "$json:delete$"
+}
