@@ -31,7 +31,7 @@ else
 		header('Cache-Control: must-revalidate');
 		header('Pragma: public');
 		//header('Content-Length: ' . filesize($path));
-		echo passthru("openssl enc -aes-256-cbc -d -in $path -k $key");
+		echo passthru(escapeshellcmd("openssl enc -aes-256-cbc -d -in $path -k $key"));
 		exit;
 		
 	}
