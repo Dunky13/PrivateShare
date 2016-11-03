@@ -1,4 +1,6 @@
 <?php
+$config = parse_ini_file("../config.ini", true);
+
 
 function curPageURL() {
 	$pageURL = 'http';
@@ -8,24 +10,24 @@ function curPageURL() {
 	return $pageURL;
 }
 
-$key = "k";
-if(!(isset($_POST[$key]) && $_POST[$key] == "WentIO"))
+$key = $config["urltags"]["key_tag"];
+if(!(isset($_POST[$key]) && $_POST[$key] == $config["security"]["key"]))
 {
 	echo json_encode(["success" => false,
 					"url" => "https://went.io"]);
 	exit(1);
 }
 
-if(isset($_POST['enc']) && $_POST['enc'])
+if(isset($_POST[$config["urltags"]["encryption_tag"]]) && $_POST[$config["urltags"]["encryption_tag"]])
 {
-	$target_dir	= "../e/";
+	$target_dir	= $config["urltags"]["encrypt_location"];
 }
 else
 {
-	$target_dir	= "../f/";
+	$target_dir	= $config["urltags"]["file_location"];
 }
 
-$file			= $_FILES["file"];
+$file			= $_FILES[$config["urltags"]["file_tag"]];
 $fileName		= basename($file["name"]);
 do
 {
@@ -39,7 +41,7 @@ $target_file	= $unique_target_dir . $fileName;
 $prepend 		= curPageURL();
 $append			= "$uniqueID/".urlencode($fileName);
 
-if(isset($_POST['enc']) && $_POST['enc'])
+if(isset($_POST[$config["urltags"]["encryption_tag"]]) && $_POST[$config["urltags"]["encryption_tag"]])
 {
 	$in			= $file["tmp_name"];
 	$passwd		= bin2hex(openssl_random_pseudo_bytes(8));

@@ -1,7 +1,7 @@
 <?php
-
-$target_dir = "../../f/";
-$target_enc = "../../e/";
+$config 	= parse_ini_file("../../config.ini", true);
+$target_dir = "../".$config["urltags"]["file_location"];
+$target_enc = "../".$config["urltags"]["encrypt_location"];
 function rsearch($folder, $pattern) {
     $dir = new RecursiveDirectoryIterator($folder,RecursiveDirectoryIterator::SKIP_DOTS);
     $ite = new RecursiveIteratorIterator($dir);

@@ -2,6 +2,9 @@
 
 	;( function( $, window, document, undefined )
 	{
+		var $key = "k";
+		var $enc = "enc";
+		var $file = "file";
 		// feature detection for drag&drop upload
 
 		var isAdvancedUpload = function()
@@ -92,11 +95,11 @@
 					{
 						$.each( droppedFiles, function( i, file )
 						{
-							ajaxData.append( "file", file );
+							ajaxData.append($file, file );
 						});
 					}
-					ajaxData.append("k", $("#ukey").val());
-					ajaxData.append("enc", "1");
+					ajaxData.append($key, $("#ukey").val());
+					ajaxData.append($enc, "1");
 					// ajax request
 					$.ajax(
 					{

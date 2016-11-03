@@ -1,8 +1,11 @@
 <?php
-$filename 	= $_GET["file"];
-if(!isset($_GET['enc']))
+
+$config = parse_ini_file("../config.ini", true);
+
+$filename 	= $_GET[$config["urltags"]["file_tag"]];
+if(!isset($_GET[$config["urltags"]["encryption_tag"]]))
 {
-	$path		= "../f/$filename";
+	$path		= $config["urltags"]["file_location"].$filename;
 	if(file_exists($path))
 	{
 		header('Content-Description: File Transfer');
@@ -20,8 +23,8 @@ if(!isset($_GET['enc']))
 }
 else
 {
-	$key 		= $_GET['enc'];
-	$path		= "../e/$filename.enc";
+	$key 		= $_GET[$config["urltags"]["encryption_tag"]];
+	$path		= $config["urltags"]["encrypt_location"]."$filename.enc";
 	if(file_exists($path))
 	{
 		header('Content-Description: File Transfer');

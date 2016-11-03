@@ -1,14 +1,15 @@
+<?php
+$config = parse_ini_file("../config.ini", true);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" 
-			content="File sharing and URL shortener for weebs.">
+			content="File sharing and URL shortener for Wents">
         <meta name="robots" content="noarchive">        
-        <!--                  [Welcome to hnng.moe v2.0!]                    -->
-        <!-- Because cute girls doing cute things are serious business       -->
-        <!-- Now javascript-free! J U C K F A V A S C R I P T                -->
         
         <title>Went.IO File Sharing</title>
 
@@ -56,14 +57,14 @@
 <p class="lead">
     Maximum file size: 5G</p>
 
-			<input id="ukey" type="text" name="k" placeholder="Upload Key"/>
+	<input id="ukey" type="text" name="<?php echo $config["urltags"]["key_tag"];?>" placeholder="Upload Key"/>
 <form method="post" action="upload.php" novalidate class="box">
 
 
 		
 		<div class="box__input">
 			<svg class="box__icon" xmlns="http://www.w3.org/2000/svg" width="50" height="43" viewBox="0 0 50 43"><path d="M48.4 26.5c-.9 0-1.7.7-1.7 1.7v11.6h-43.3v-11.6c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v13.2c0 .9.7 1.7 1.7 1.7h46.7c.9 0 1.7-.7 1.7-1.7v-13.2c0-1-.7-1.7-1.7-1.7zm-24.5 6.1c.3.3.8.5 1.2.5.4 0 .9-.2 1.2-.5l10-11.6c.7-.7.7-1.7 0-2.4s-1.7-.7-2.4 0l-7.1 8.3v-25.3c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v25.3l-7.1-8.3c-.7-.7-1.7-.7-2.4 0s-.7 1.7 0 2.4l10 11.6z"/></svg>
-			<input type="file" name="file" id="file" class="box__file" />
+			<input type="file" name="<?php echo $config["urltags"]["file_tag"];?>" id="file" class="box__file" />
 			<label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
 			<button type="submit" class="box__button">Upload</button>
 		</div>
@@ -76,7 +77,7 @@
 
 
 
-<p><sub>You can also upload screenshots and files directly from your desktop by setting up <a target="_blank" href="http://getsharex.com/">ShareX</a>.</sub></p>
+	<p><sub>You can also upload screenshots and files directly from your desktop by setting up <a target="_blank" href="http://getsharex.com/">ShareX</a>. You can download the config <a href="https://share.went.io/f/shareXConfig.json">HERE</a></sub></p>
             </div>
             
             <div class="footer jumbotron">
