@@ -10,15 +10,20 @@ function curPageURL() {
 	return $pageURL;
 }
 
-$key = $config["urltags"]["key_tag"];
+$key 			= $config["urltags"]["key_tag"];
+$enc 			= $config["urltags"]["encryption_tag"];
+$encryptTest	= isset($_POST[$enc]) && filter_var($_POST[$enc], FILTER_VALIDATE_BOOLEAN);
+
 if(!(isset($_POST[$key]) && $_POST[$key] == $config["security"]["key"]))
 {
 	echo json_encode(["success" => false,
-					"url" => "https://went.io"]);
+						"url" => "https://went.io",
+						"debug" => $_FILES
+	]);
 	exit(1);
 }
 
-if(isset($_POST[$config["urltags"]["encryption_tag"]]) && $_POST[$config["urltags"]["encryption_tag"]])
+if($encryptTest)
 {
 	$target_dir	= $config["urltags"]["encrypt_location"];
 }
@@ -41,7 +46,7 @@ $target_file	= $unique_target_dir . $fileName;
 $prepend 		= curPageURL();
 $append			= "$uniqueID/".urlencode($fileName);
 
-if(isset($_POST[$config["urltags"]["encryption_tag"]]) && $_POST[$config["urltags"]["encryption_tag"]])
+if($encryptTest)
 {
 	$in			= $file["tmp_name"];
 	$passwd		= bin2hex(openssl_random_pseudo_bytes(8));
@@ -57,12 +62,14 @@ else
 if(isset($url)){
 	echo json_encode(["success" => true,
 					"url" => $url,
-					"delete" => "$prepend/d/$append"
+					"delete" => "$prepend/d/$append",
+					"debug" => $_FILES
 				]);
 }
 else
-{		echo json_encode(["success" => true,
-					"url" => "https://went.io",
+{		echo json_encode(["success" => false,
+	"url" => "https://went.io",
+	"debug"=> $_FILES
 				]);
 }
 

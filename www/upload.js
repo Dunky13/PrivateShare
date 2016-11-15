@@ -99,7 +99,7 @@
 						});
 					}
 					ajaxData.append($key, $("#ukey").val());
-					ajaxData.append($enc, "1");
+					ajaxData.append($enc, $("#encrypt").is(":checked"));
 					// ajax request
 					$.ajax(
 					{

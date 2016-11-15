@@ -45,8 +45,6 @@ $config = parse_ini_file("../config.ini", true);
 
     </head>
     
-    <!-- how do I quickscope -->
-    
     <body>
         <!-- contents -->
 		<div class="container">
@@ -58,6 +56,7 @@ $config = parse_ini_file("../config.ini", true);
     Maximum file size: 5G</p>
 
 	<input id="ukey" type="text" name="<?php echo $config["urltags"]["key_tag"];?>" placeholder="Upload Key"/>
+	<label><input id="encrypt" type="checkbox" name="<?php echo $config["urltags"]["encryption_tag"];?>" checked="checked" />Encrypted</label>
 <form method="post" action="upload.php" novalidate class="box">
 
 
