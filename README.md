@@ -1,5 +1,5 @@
 # PrivateShare
-PrivateShare is an opensource WeTransfer alternative running on PHP & OpenSSL. 
+PrivateShare is an opensource WeTransfer alternative running on PHP & OpenSSL and NO Database. 
 
 - [Requirements](https://github.com/Dunky13/PrivateShare/tree/master#requirements)
 - [Demo](https://github.com/Dunky13/PrivateShare/tree/master#demo)
