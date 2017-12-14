@@ -30,6 +30,8 @@ RewriteRule ^/e/([^/]+)/(.*)$ /get.php?enc=$1&file=$2 [L]
 RewriteRule ^/d/(.*)$ /priv/delete.php?file=$1 [L]
 ```
 
+Change the Nginx site config to redirect some urls:
+  `/var/www/upload` is just an example, change this to suit your webserver.
 ```nginx
 root /var/www/upload/;
 
@@ -52,8 +54,6 @@ location ^~ /priv/ {
 }
 rewrite ^/e/([^/]+)/(.*)$ /get.php?enc=$1&file=$2;
 rewrite ^/d/(.*)$ /priv/delete.php?file=$1;
-
-
 ```
 
 ## Demo
