@@ -41,39 +41,41 @@ $listenc 	= rsearch($target_enc, "/.*/");
 
 <html>
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sortable/0.8.0/css/sortable-theme-bootstrap.css"> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sortable/0.8.0/js/sortable.min.js"></script>
-<script>
-function deleteURL(name,url)
-{
-	if(confirm("Are you sure you want to delete "+name)){
-		$.get(
-			url,
-			'',
-			function(response){
-				location.reload();
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sortable/0.8.0/css/sortable-theme-bootstrap.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sortable/0.8.0/js/sortable.min.js"></script>
+	<script>
+		function deleteURL(name,url)
+		{
+			if(confirm("Are you sure you want to delete "+name)){
+				$.get(
+					url,
+					'',
+					function(response){
+						location.reload();
+					}
+				);
 			}
-		);
-	}
-}
-</script>
-
+		}
+	</script>
 </head>
 <body>
-
-<table class="sortable-theme-bootstrap" data-sortable>
-<thead><tr><th>Date</th><th>Name</th><th>Size</th><th>View</th><th>Delete</th></tr></thead>
-<tbody>
-<?php
-
-	echo tableList($list, $target_dir);
-	echo tableList($listenc, $target_enc);
-
-?>
-</tbody>
-</table>
-
+	<table class="sortable-theme-bootstrap" data-sortable>
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Name</th>
+				<th>Size</th>
+				<th>View</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php
+				echo tableList($list, $target_dir);
+				echo tableList($listenc, $target_enc);
+			?>
+		</tbody>
+	</table>
 </body>
 </html>
-

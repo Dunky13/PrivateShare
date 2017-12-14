@@ -17,7 +17,7 @@ $encryptTest	= isset($_POST[$enc]) && filter_var($_POST[$enc], FILTER_VALIDATE_B
 if(!(isset($_POST[$key]) && $_POST[$key] == $config["security"]["key"]))
 {
 	echo json_encode(["success" => false,
-						"url" => "https://went.io",
+						"url" => $config["urltags"]["redirect_url"],
 						"debug" => $_FILES
 	]);
 	exit(1);
@@ -68,7 +68,7 @@ if(isset($url)){
 }
 else
 {		echo json_encode(["success" => false,
-	"url" => "https://went.io",
+	"url" => $config["urltags"]["redirect_url"],
 	"debug"=> $_FILES
 				]);
 }

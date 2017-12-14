@@ -1,7 +1,7 @@
 {
-  "Name": "went.io",
+  "Name": "PrivateShare webserver",
   "RequestType": "POST",
-  "RequestURL": "https://upload.went.io/upload.php",
+  "RequestURL": "https://<Domain here>/upload.php",
   "FileFormName": "file",
   "Arguments": {
     "k": "<Proper Key Here, ask Marc Went>",
