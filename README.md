@@ -30,5 +30,31 @@ RewriteRule ^/e/([^/]+)/(.*)$ /get.php?enc=$1&file=$2 [L]
 RewriteRule ^/d/(.*)$ /priv/delete.php?file=$1 [L]
 ```
 
+```nginx
+root /var/www/upload/;
+
+client_max_body_size 5G;
+
+location / {
+	index index.php;
+	aio threads;
+}
+location /f/ {
+	aio threads;
+	directio 16M;
+	output_buffers 2 1M;
+	alias /var/www/upload/f/;
+}
+
+location ^~ /priv/ {
+	auth_basic      "Login";
+	auth_basic_user_file    /etc/nginx/passwd/.htpasswd;
+}
+rewrite ^/e/([^/]+)/(.*)$ /get.php?enc=$1&file=$2;
+rewrite ^/d/(.*)$ /priv/delete.php?file=$1;
+
+
+```
+
 ## Demo
 [Demo](https://share.went.io)
