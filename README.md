@@ -2,6 +2,8 @@
 PrivateShare is an opensource WeTransfer alternative running on PHP & OpenSSL and NO Database. 
 
 - [Requirements](https://github.com/Dunky13/PrivateShare/tree/master#requirements)
+- [Apache config](https://github.com/Dunky13/PrivateShare/tree/master#apache)
+- [Nginx config](https://github.com/Dunky13/PrivateShare/tree/master#nginx)
 - [Demo](https://github.com/Dunky13/PrivateShare/tree/master#demo)
 
 ## Requirements
@@ -12,6 +14,7 @@ PrivateShare is an opensource WeTransfer alternative running on PHP & OpenSSL an
 
 Change the `.htaccess` file in the `www` folder to set the max upload file of PHP. Default is set to `5GB`.
 
+### Apache
 Change the Apache VirtualHost to redirect some urls:
   `/var/www/upload` is just an example, change this to suit your webserver.
 ```apache
@@ -30,6 +33,7 @@ RewriteRule ^/e/([^/]+)/(.*)$ /get.php?enc=$1&file=$2 [L]
 RewriteRule ^/d/(.*)$ /priv/delete.php?file=$1 [L]
 ```
 
+### Nginx
 Change the Nginx site config to redirect some urls:
   `/var/www/upload` is just an example, change this to suit your webserver.
 ```nginx
